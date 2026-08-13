@@ -25,6 +25,18 @@ flowchart TB
 
 ---
 
+## 🇸🇦 Why This Matters for Saudi Arabia
+
+This project was designed with Saudi Vision 2030 priorities in mind:
+
+- **Smart Hajj Initiative:** Demonstrates AI-powered crowd safety concepts applicable to Hajj operations with 2.5M+ pilgrims
+- **5G National Strategy:** Implements 5G network slice security patterns relevant to critical infrastructure protection
+- **Cybersecurity Framework:** Security practices informed by NCA (National Cybersecurity Authority) principles and defense-in-depth strategy
+- **Data Privacy:** Encryption and access-logging patterns aligned with PDPL principles (demonstrates understanding of consent management and data protection concepts)
+- **Digital Transformation:** Full-stack solution with cloud deployment, showcasing modern DevSecOps practices
+
+**Target Sectors:** Government, Telecommunications, Smart Cities, Cybersecurity, Cloud Infrastructure
+
 ## Problem Statement
 
 During Hajj, over 2.5 million pilgrims converge in a 5 sq km area. The 5G network is their lifeline — emergency alerts, crowd monitoring, medical coordination. But a single DDoS attack or sensor compromise during peak hours can trigger panic, stampede, or emergency response failure. Current security systems don't integrate telecom network defense with crowd safety.
