@@ -38,11 +38,10 @@ During Hajj, over 2.5 million pilgrims converge in a 5 sq km area. The 5G networ
 ![Heatmap](docs/screenshots/heatmap-view.png)
 
 ### Network Security Status
-![Network Security](docs/screenshots/network-security.png) *(Coming soon)*
+![Network Security](docs/screenshots/network-security.png)
 
 ### Alert Feed
-![Alert Feed](docs/screenshots/alert-feed.png) *(Coming soon)*
-
+![Alert Feed](docs/screenshots/alert-feed.png)
 ## 🌐 Live Demo
 
 - **Dashboard:** https://tehreem-fat.github.io/hajj-shield-platform/dashboard/index.html
