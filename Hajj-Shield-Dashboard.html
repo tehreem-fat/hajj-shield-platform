@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAJJ-SHIELD — Operations Center</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg-0:#0A1210;
+    --bg-1:#0F1B18;
+    --bg-panel:#132420;
+    --line:#1E3B33;
+    --sand:#C9A84C;
+    --sand-dim:#8A7538;
+    --green:#2E9C6E;
+    --green-dim:#1D6B4A;
+    --amber:#E0A93B;
+    --red:#E0503B;
+    --text-hi:#EDEFEA;
+    --text-mid:#9FB0A9;
+    --text-low:#5E7169;
+    --mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 15% 10%, rgba(46,156,110,0.06), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(201,168,76,0.05), transparent 45%),
+      var(--bg-0);
+    color:var(--text-hi);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    min-height:100vh;
+    padding:20px;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  .wrap{max-width:1400px; margin:0 auto;}
+
+  /* ===== HEADER ===== */
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-bottom:16px; margin-bottom:20px;
+    border-bottom:1px solid var(--line);
+  }
+  .brand{display:flex; align-items:center; gap:14px;}
+  .brand-mark{
+    width:42px; height:42px; border-radius:50%;
+    border:2px solid var(--sand);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .brand-mark::after{
+    content:''; position:absolute; width:10px; height:10px; border-radius:50%;
+    background:var(--sand); animation:pulse-dot 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse-dot{
+    0%,100%{transform:scale(1); opacity:1;}
+    50%{transform:scale(1.6); opacity:0.4;}
+  }
+  .brand h1{
+    font-family:'Space Grotesk', sans-serif; font-size:20px; font-weight:700;
+    letter-spacing:0.5px;
+  }
+  .brand p{color:var(--text-mid); font-size:12px; margin-top:2px; letter-spacing:0.3px;}
+  .status-strip{display:flex; gap:22px; align-items:center;}
+  .status-item{text-align:right;}
+  .status-item .label{font-size:10px; color:var(--text-low); text-transform:uppercase; letter-spacing:1px;}
+  .status-item .value{font-family:var(--mono); font-size:14px; font-weight:500; color:var(--green);}
+  .clock{font-family:var(--mono); font-size:13px; color:var(--text-mid);}
+
+  /* ===== GRID ===== */
+  .grid{
+    display:grid;
+    grid-template-columns: 1.35fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap:16px;
+  }
+  .panel{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+    position:relative;
+    overflow:hidden;
+  }
+  .panel-title{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:14px;
+  }
+  .panel-title h2{
+    font-family:'Space Grotesk', sans-serif; font-size:13px; font-weight:600;
+    text-transform:uppercase; letter-spacing:1px; color:var(--text-hi);
+  }
+  .panel-title .tag{
+    font-family:var(--mono); font-size:10px; padding:2px 8px; border-radius:20px;
+    border:1px solid var(--line); color:var(--text-mid);
+  }
+
+  /* ===== ZONE MAP (SIGNATURE ELEMENT: TAWAF RINGS) ===== */
+  .map-panel{grid-column:1; grid-row:1 / span 2;}
+  .tawaf-field{
+    position:relative; height:340px; display:flex; align-items:center; justify-content:center;
+  }
+  .kaaba{
+    position:absolute; width:30px; height:30px; background:var(--sand);
+    border-radius:3px; box-shadow:0 0 24px rgba(201,168,76,0.55);
+    z-index:5;
+  }
+  .zone-node{
+    position:absolute; display:flex; flex-direction:column; align-items:center; gap:6px;
+    cursor:default;
+  }
+  .zone-ring{
+    width:64px; height:64px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:11px; font-weight:600;
+    position:relative;
+  }
+  .zone-ring::before{
+    content:''; position:absolute; inset:-8px; border-radius:50%;
+    border:1px solid currentColor; opacity:0.35;
+    animation:ring-expand 2.6s ease-out infinite;
+  }
+  @keyframes ring-expand{
+    0%{transform:scale(0.9); opacity:0.5;}
+    100%{transform:scale(1.5); opacity:0;}
+  }
+  .zone-ring.green{background:rgba(46,156,110,0.18); color:var(--green); border:1.5px solid var(--green);}
+  .zone-ring.yellow{background:rgba(224,169,59,0.18); color:var(--amber); border:1.5px solid var(--amber);}
+  .zone-ring.red{background:rgba(224,80,59,0.22); color:var(--red); border:1.5px solid var(--red);}
+  .zone-ring.red::before{animation-duration:1.2s;}
+  .zone-label{font-size:10px; color:var(--text-mid); text-align:center; max-width:80px;}
+  .zone-score{font-family:var(--mono); font-size:9px; color:var(--text-low);}
+
+  .pos-mataf{top:36%; left:50%; transform:translate(-50%,-50%);}
+  .pos-masaa{top:70%; left:20%;}
+  .pos-jamarat{top:12%; left:80%;}
+  .pos-gate{top:78%; left:78%;}
+
+  .legend{
+    position:absolute; bottom:12px; left:18px; display:flex; gap:14px;
+    font-size:10px; color:var(--text-mid);
+  }
+  .legend span{display:inline-flex; align-items:center; gap:5px;}
+  .dot{width:7px; height:7px; border-radius:50%; display:inline-block;}
+
+  /* ===== NETWORK SECURITY ===== */
+  .net-panel{grid-column:2;}
+  .slice-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 0; border-bottom:1px solid var(--line);
+  }
+  .slice-row:last-child{border-bottom:none;}
+  .slice-name{font-size:12px; color:var(--text-hi);}
+  .slice-sub{font-size:10px; color:var(--text-low); margin-top:2px;}
+  .badge{
+    font-family:var(--mono); font-size:10px; padding:3px 10px; border-radius:20px;
+    font-weight:500; letter-spacing:0.3px;
+  }
+  .badge.ok{background:rgba(46,156,110,0.15); color:var(--green); border:1px solid var(--green-dim);}
+  .badge.isolated{background:rgba(224,80,59,0.15); color:var(--red); border:1px solid var(--red);}
+
+  /* ===== THREAT COUNTER ===== */
+  .counter-panel{grid-column:3;}
+  .counter-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .counter-cell{text-align:left;}
+  .counter-num{
+    font-family:'Space Grotesk', sans-serif; font-size:30px; font-weight:700;
+    color:var(--text-hi); line-height:1;
+  }
+  .counter-num.red{color:var(--red);}
+  .counter-num.green{color:var(--green);}
+  .counter-num.sand{color:var(--sand);}
+  .counter-lbl{font-size:10px; color:var(--text-mid); margin-top:6px; text-transform:uppercase; letter-spacing:0.5px;}
+
+  /* ===== ALERT FEED ===== */
+  .alert-panel{grid-column:2 / span 2;}
+  .alert-item{
+    display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--line);
+  }
+  .alert-item:last-child{border-bottom:none;}
+  .alert-sev{
+    font-family:var(--mono); font-size:9px; padding:3px 7px; border-radius:4px;
+    height:fit-content; white-space:nowrap; font-weight:600;
+  }
+  .alert-sev.critical{background:rgba(224,80,59,0.2); color:var(--red);}
+  .alert-sev.high{background:rgba(224,169,59,0.2); color:var(--amber);}
+  .alert-sev.verified{background:rgba(46,156,110,0.2); color:var(--green);}
+  .alert-sev.blocked{background:rgba(94,113,105,0.25); color:var(--text-mid);}
+  .alert-body{flex:1;}
+  .alert-msg{font-size:12px; color:var(--text-hi); line-height:1.4;}
+  .alert-meta{font-size:10px; color:var(--text-low); margin-top:3px; font-family:var(--mono);}
+
+  /* ===== SYSTEM HEALTH / CHART ===== */
+  .health-panel{grid-column:1;}
+  .health-row{display:flex; justify-content:space-between; font-size:11px; padding:7px 0; color:var(--text-mid);}
+  .health-row b{color:var(--text-hi); font-family:var(--mono); font-weight:500;}
+  canvas{max-height:120px;}
+
+  footer{
+    margin-top:20px; padding-top:14px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; font-size:10px; color:var(--text-low);
+    font-family:var(--mono);
+  }
+
+  @media (max-width:1000px){
+    .grid{grid-template-columns:1fr;}
+    .map-panel, .net-panel, .counter-panel, .alert-panel, .health-panel{grid-column:1; grid-row:auto;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div>
+        <h1>HAJJ&#8209;SHIELD</h1>
+        <p>AI-Powered 5G Crowd Safety &amp; Network Security Platform</p>
+      </div>
+    </div>
+    <div class="status-strip">
+      <div class="status-item">
+        <div class="label">System Status</div>
+        <div class="value" id="sysStatus">OPERATIONAL</div>
+      </div>
+      <div class="status-item">
+        <div class="label">Active Slice</div>
+        <div class="value" style="color:var(--sand)">Hajj-Emergency-Slice</div>
+      </div>
+      <div class="clock" id="clock">--:--:--</div>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <!-- ZONE / TAWAF MAP -->
+    <div class="panel map-panel">
+      <div class="panel-title">
+        <h2>Haram Live Zone Map</h2>
+        <span class="tag">4 zones · live</span>
+      </div>
+      <div class="tawaf-field">
+        <div class="kaaba" title="Kaaba (reference point)"></div>
+
+        <div class="zone-node pos-mataf">
+          <div class="zone-ring green">76</div>
+          <div class="zone-label">Mataf</div>
+          <div class="zone-score">GREEN · 3,800 pax</div>
+        </div>
+
+        <div class="zone-node pos-masaa">
+          <div class="zone-ring yellow">82</div>
+          <div class="zone-label">Masa'a</div>
+          <div class="zone-score">YELLOW · 12,300 pax</div>
+        </div>
+
+        <div class="zone-node pos-jamarat">
+          <div class="zone-ring red">108</div>
+          <div class="zone-label">Jamarat</div>
+          <div class="zone-score">RED · 8,600 pax</div>
+        </div>
+
+        <div class="zone-node pos-gate">
+          <div class="zone-ring green">60</div>
+          <div class="zone-label">King Fahd Gate</div>
+          <div class="zone-score">GREEN · 1,800 pax</div>
+        </div>
+      </div>
+      <div class="legend">
+        <span><span class="dot" style="background:var(--green)"></span>Safe</span>
+        <span><span class="dot" style="background:var(--amber)"></span>Warning</span>
+        <span><span class="dot" style="background:var(--red)"></span>Critical</span>
+      </div>
+    </div>
+
+    <!-- NETWORK SECURITY -->
+    <div class="panel net-panel">
+      <div class="panel-title">
+        <h2>Network Security Status</h2>
+        <span class="tag">Module 1</span>
+      </div>
+      <div class="slice-row">
+        <div>
+          <div class="slice-name">Hajj-Emergency-Slice</div>
+          <div class="slice-sub">packet_rate: 17,800/s · syn_ratio: 0.88</div>
+        </div>
+        <span class="badge isolated">ISOLATED</span>
+      </div>
+      <div class="slice-row">
+        <div>
+          <div class="slice-name">Hajj-Emergency-Slice-Backup</div>
+          <div class="slice-sub">failover active · nominal load</div>
+        </div>
+        <span class="badge ok">ACTIVE</span>
+      </div>
+      <div class="slice-row">
+        <div>
+          <div class="slice-name">Pilgrim-Data-Slice</div>
+          <div class="slice-sub">encrypted channel · PDPL compliant</div>
+        </div>
+        <span class="badge ok">ACTIVE</span>
+      </div>
+    </div>
+
+    <!-- THREAT COUNTER -->
+    <div class="panel counter-panel">
+      <div class="panel-title">
+        <h2>Threat Counter</h2>
+        <span class="tag">24h</span>
+      </div>
+      <div class="counter-grid">
+        <div class="counter-cell">
+          <div class="counter-num red">1</div>
+          <div class="counter-lbl">DDoS blocked</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-num sand">1</div>
+          <div class="counter-lbl">Fake alerts caught</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-num green">1</div>
+          <div class="counter-lbl">Alerts verified &amp; sent</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-num" style="color:var(--text-hi)">15</div>
+          <div class="counter-lbl">Anomaly readings (Jamarat)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALERT FEED -->
+    <div class="panel alert-panel">
+      <div class="panel-title">
+        <h2>Verified Alert Feed</h2>
+        <span class="tag">Module 3</span>
+      </div>
+      <div class="alert-item">
+        <span class="alert-sev critical">CRITICAL</span>
+        <div class="alert-body">
+          <div class="alert-msg">DDoS attack detected on Hajj-Emergency-Slice — slice auto-isolated, backup activated.</div>
+          <div class="alert-meta">14:05:00 · source: SliceSecurityMonitor</div>
+        </div>
+      </div>
+      <div class="alert-item">
+        <span class="alert-sev blocked">BLOCKED</span>
+        <div class="alert-body">
+          <div class="alert-msg">"Bridge collapsed at Jamarat!" — signature verification failed, broadcast blocked.</div>
+          <div class="alert-meta">14:08:00 · source: unknown (unsigned)</div>
+        </div>
+      </div>
+      <div class="alert-item">
+        <span class="alert-sev verified">VERIFIED</span>
+        <div class="alert-body">
+          <div class="alert-msg">Please use alternate route to Jamarat. Gate 4 congested.</div>
+          <div class="alert-meta">14:10:00 · source: Hajj-Control-Room-01 · HMAC verified</div>
+        </div>
+      </div>
+      <div class="alert-item">
+        <span class="alert-sev high">HIGH</span>
+        <div class="alert-body">
+          <div class="alert-msg">Jamarat zone density score 108/100 — risk level RED, anomaly flagged by Isolation Forest.</div>
+          <div class="alert-meta">14:07:00 · source: CrowdAnomalyDetector</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SYSTEM HEALTH -->
+    <div class="panel health-panel">
+      <div class="panel-title">
+        <h2>System Health</h2>
+        <span class="tag">live</span>
+      </div>
+      <canvas id="healthChart"></canvas>
+      <div class="health-row"><span>Uptime</span><b>99.97%</b></div>
+      <div class="health-row"><span>Avg response time</span><b>142 ms</b></div>
+      <div class="health-row"><span>Sensors online</span><b>4 / 4 zones</b></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>HAJJ-SHIELD v1.0 · Central Dashboard · Modules 1&#8211;5 integrated</span>
+    <span id="footClock">2026-06-15 14:15:00 UTC</span>
+  </footer>
+
+</div>
+
+<script>
+  function tick(){
+    const now = new Date();
+    document.getElementById('clock').textContent = now.toLocaleTimeString('en-GB');
+  }
+  tick(); setInterval(tick, 1000);
+
+  const ctx = document.getElementById('healthChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['-25m','-20m','-15m','-10m','-5m','now'],
+      datasets: [{
+        data: [98, 99, 97, 94, 88, 96],
+        borderColor: '#2E9C6E',
+        backgroundColor: 'rgba(46,156,110,0.12)',
+        tension: 0.35,
+        fill: true,
+        pointRadius: 0,
+        borderWidth: 2,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { display:false },
+        y: { display:false, min:80, max:100 }
+      }
+    }
+  });
+</script>
+</body>
+</html>

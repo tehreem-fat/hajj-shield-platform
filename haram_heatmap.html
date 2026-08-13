@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d434f7ee4e91ec9d193e9b8995ec3923 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; bottom: 30px; left: 30px; z-index: 9999;
+                background: white; padding: 10px 14px; border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.25); font-family: sans-serif; font-size: 13px;">
+        <b>Zone Risk</b><br>
+        <span style="color:#2ecc71;">●</span> Green — Safe<br>
+        <span style="color:#f1c40f;">●</span> Yellow — Warning<br>
+        <span style="color:#e74c3c;">●</span> Red — Critical
+    </div>
+    
+    
+            <div class="folium-map" id="map_d434f7ee4e91ec9d193e9b8995ec3923" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d434f7ee4e91ec9d193e9b8995ec3923 = L.map(
+                "map_d434f7ee4e91ec9d193e9b8995ec3923",
+                {
+                    center: [21.42255, 39.82675],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 17,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_486d35df3a428f768b17a4cee6a108b8 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_486d35df3a428f768b17a4cee6a108b8.addTo(map_d434f7ee4e91ec9d193e9b8995ec3923);
+        
+    
+            var circle_5b747d58754858aef17a148e04798bb1 = L.circle(
+                [21.4225, 39.8262],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 151.2, "stroke": true, "weight": 3}
+            ).addTo(map_d434f7ee4e91ec9d193e9b8995ec3923);
+        
+    
+        var popup_11a651e513cc4e59f038be85a59fa7ec = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a8ac60557d28b8d549ef33f5c3d329e3 = $(`<div id="html_a8ac60557d28b8d549ef33f5c3d329e3" style="width: 100.0%; height: 100.0%;"><b>Mataf</b><br>Risk: <b style='color:#2ecc71'>GREEN</b><br>Density score: 76<br>People count: 3800<br>Capacity: 5000</div>`)[0];
+                popup_11a651e513cc4e59f038be85a59fa7ec.setContent(html_a8ac60557d28b8d549ef33f5c3d329e3);
+            
+        
+
+        circle_5b747d58754858aef17a148e04798bb1.bindPopup(popup_11a651e513cc4e59f038be85a59fa7ec)
+        ;
+
+        
+    
+    
+            circle_5b747d58754858aef17a148e04798bb1.bindTooltip(
+                `<div>
+                     Mataf — GREEN
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4656a70cfb19602a214770791e7e48c8 = L.marker(
+                [21.4225, 39.8262],
+                {
+}
+            ).addTo(map_d434f7ee4e91ec9d193e9b8995ec3923);
+        
+    
+            var div_icon_d557ab6b8cf163ee5b14fbc3bc1d59fb = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:11px;font-weight:600;\n                color:#222;text-shadow:0 0 3px #fff;\"\u003eMataf\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_4656a70cfb19602a214770791e7e48c8.setIcon(div_icon_d557ab6b8cf163ee5b14fbc3bc1d59fb);
+            
+    
+            var circle_68f5a6a967241ee3a455e01ee7337582 = L.circle(
+                [21.4227, 39.8268],
+                {"bubblingMouseEvents": true, "color": "#f1c40f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 158.39999999999998, "stroke": true, "weight": 3}
+            ).addTo(map_d434f7ee4e91ec9d193e9b8995ec3923);
+        
+    
+        var popup_b97fe91888228be5fdd6d3568655acf9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_02856d622150ce568316d9644c5b9c00 = $(`<div id="html_02856d622150ce568316d9644c5b9c00" style="width: 100.0%; height: 100.0%;"><b>Masa a</b><br>Risk: <b style='color:#f1c40f'>YELLOW</b><br>Density score: 82<br>People count: 12300<br>Capacity: 15000</div>`)[0];
+                popup_b97fe91888228be5fdd6d3568655acf9.setContent(html_02856d622150ce568316d9644c5b9c00);
+            
+        
+
+        circle_68f5a6a967241ee3a455e01ee7337582.bindPopup(popup_b97fe91888228be5fdd6d3568655acf9)
+        ;
+
+        
+    
+    
+            circle_68f5a6a967241ee3a455e01ee7337582.bindTooltip(
+                `<div>
+                     Masa a — YELLOW
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_83d3f59b29e3ed1cf625434fed8c4e4b = L.marker(
+                [21.4227, 39.8268],
+                {
+}
+            ).addTo(map_d434f7ee4e91ec9d193e9b8995ec3923);
+        
+    
+            var div_icon_9faa9dc190ddf64df2555976ebe78733 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:11px;font-weight:600;\n                color:#222;text-shadow:0 0 3px #fff;\"\u003eMasa a\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_83d3f59b29e3ed1cf625434fed8c4e4b.setIcon(div_icon_9faa9dc190ddf64df2555976ebe78733);
+            
+    
+            var circle_1c0885dcb5e391f059aa307246fde5b2 = L.circle(
+                [21.424, 39.83],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 189.6, "stroke": true, "weight": 3}
+            ).addTo(map_d434f7ee4e91ec9d193e9b8995ec3923);
+        
+    
+        var popup_7e5f580101467789e02cbfa191a5d3ab = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_32bdcdf74f816536939b576fbd18ac75 = $(`<div id="html_32bdcdf74f816536939b576fbd18ac75" style="width: 100.0%; height: 100.0%;"><b>Jamarat</b><br>Risk: <b style='color:#e74c3c'>RED</b><br>Density score: 108<br>People count: 8600<br>Capacity: 8000</div>`)[0];
+                popup_7e5f580101467789e02cbfa191a5d3ab.setContent(html_32bdcdf74f816536939b576fbd18ac75);
+            
+        
+
+        circle_1c0885dcb5e391f059aa307246fde5b2.bindPopup(popup_7e5f580101467789e02cbfa191a5d3ab)
+        ;
+
+        
+    
+    
+            circle_1c0885dcb5e391f059aa307246fde5b2.bindTooltip(
+                `<div>
+                     Jamarat — RED
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_852458a7ccee9a1032a7975f187b9d55 = L.marker(
+                [21.424, 39.83],
+                {
+}
+            ).addTo(map_d434f7ee4e91ec9d193e9b8995ec3923);
+        
+    
+            var div_icon_39dfd2a6afd9d2405d7470f744167d7d = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:11px;font-weight:600;\n                color:#222;text-shadow:0 0 3px #fff;\"\u003eJamarat\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_852458a7ccee9a1032a7975f187b9d55.setIcon(div_icon_39dfd2a6afd9d2405d7470f744167d7d);
+            
+    
+            var circle_e9897316412a98a66aaa259404cf03c9 = L.circle(
+                [21.421, 39.824],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 132.0, "stroke": true, "weight": 3}
+            ).addTo(map_d434f7ee4e91ec9d193e9b8995ec3923);
+        
+    
+        var popup_f6864eb7b708917a2a8d772b6dce4419 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_20d7e1fe83a6f173de390e165c973846 = $(`<div id="html_20d7e1fe83a6f173de390e165c973846" style="width: 100.0%; height: 100.0%;"><b>King Fahd Gate</b><br>Risk: <b style='color:#2ecc71'>GREEN</b><br>Density score: 60<br>People count: 1800<br>Capacity: 3000</div>`)[0];
+                popup_f6864eb7b708917a2a8d772b6dce4419.setContent(html_20d7e1fe83a6f173de390e165c973846);
+            
+        
+
+        circle_e9897316412a98a66aaa259404cf03c9.bindPopup(popup_f6864eb7b708917a2a8d772b6dce4419)
+        ;
+
+        
+    
+    
+            circle_e9897316412a98a66aaa259404cf03c9.bindTooltip(
+                `<div>
+                     King Fahd Gate — GREEN
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e21af47d862986b5080db44d5efa1ab4 = L.marker(
+                [21.421, 39.824],
+                {
+}
+            ).addTo(map_d434f7ee4e91ec9d193e9b8995ec3923);
+        
+    
+            var div_icon_b04d9a36aead3cc9103a3ddddbd80df4 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:11px;font-weight:600;\n                color:#222;text-shadow:0 0 3px #fff;\"\u003eKing Fahd Gate\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_e21af47d862986b5080db44d5efa1ab4.setIcon(div_icon_b04d9a36aead3cc9103a3ddddbd80df4);
+            
+</script>
+</html>

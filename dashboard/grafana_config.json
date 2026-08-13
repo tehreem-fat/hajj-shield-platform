@@ -1,0 +1,55 @@
+{
+  "dashboard": {
+    "title": "HAJJ-SHIELD Operations Center",
+    "timezone": "Asia/Riyadh",
+    "refresh": "5s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Haram Live Map",
+        "type": "geomap",
+        "description": "Heatmap of crowd density per zone (Green/Yellow/Red), fed by module_2_crowd_anomaly anomaly_results.csv via InfluxDB/CSV data source.",
+        "gridPos": { "x": 0, "y": 0, "w": 12, "h": 10 }
+      },
+      {
+        "id": 2,
+        "title": "Network Security Status",
+        "type": "table",
+        "description": "Active slice status (ACTIVE/ISOLATED), fed by module_1_slice_security threat_log.json.",
+        "gridPos": { "x": 12, "y": 0, "w": 6, "h": 5 }
+      },
+      {
+        "id": 3,
+        "title": "Alert Feed",
+        "type": "logs",
+        "description": "Verified alert stream from module_3_alert_validator alert_verifier.py output.",
+        "gridPos": { "x": 12, "y": 5, "w": 12, "h": 5 }
+      },
+      {
+        "id": 4,
+        "title": "Threat Counter",
+        "type": "stat",
+        "description": "Running totals: DDoS blocked, fake alerts caught, verified alerts sent.",
+        "gridPos": { "x": 18, "y": 0, "w": 6, "h": 5 }
+      },
+      {
+        "id": 5,
+        "title": "System Health",
+        "type": "timeseries",
+        "description": "Uptime, response time, sensor connectivity across all 4 zones.",
+        "gridPos": { "x": 0, "y": 10, "w": 12, "h": 6 }
+      }
+    ],
+    "data_sources": {
+      "recommended": "InfluxDB (time-series for sensor + threat data) or a lightweight CSV/JSON data source plugin for local demo",
+      "ingestion_note": "Each module writes structured JSON/CSV output (threat_log.json, anomaly_results.csv, alert queue dumps) that can be piped into InfluxDB via a small Python writer using the influxdb-client library, or read directly by Grafana's JSON API / Infinity plugin for a zero-infra demo."
+    }
+  },
+  "setup_instructions": [
+    "1. Install Grafana OSS (free): https://grafana.com/oss/grafana/",
+    "2. Add a data source — for the fastest demo path, install the 'Infinity' plugin and point it at the module output JSON/CSV files directly (no database needed).",
+    "3. Import panels above, or recreate them manually matching the layout in this file.",
+    "4. For a live-feeling demo, run demo_scenario/hajj_day3_emergency.py on a loop and have Grafana poll the output files every 5s (refresh interval above).",
+    "5. Alternatively, use dashboard/index.html — a self-contained HTML/CSS/JS mockup of this exact layout — for interviews and portfolio screenshots where installing Grafana isn't practical."
+  ]
+}
