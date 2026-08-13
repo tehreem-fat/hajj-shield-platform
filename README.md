@@ -1,6 +1,12 @@
 # HAJJ-SHIELD
 ### AI-Powered 5G Crowd Safety & Network Security Platform
-
+![Status](https://img.shields.io/badge/status-production_ready-2E9C6E)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen)
+[![Stars](https://img.shields.io/github/stars/tehreem-fat/hajj-shield-platform)](https://github.com/tehreem-fat/hajj-shield-platform/stargazers)
+[![Forks](https://img.shields.io/github/forks/tehreem-fat/hajj-shield-platform)](https://github.com/tehreem-fat/hajj-shield-platform/network)
+[![Issues](https://img.shields.io/github/issues/tehreem-fat/hajj-shield-platform)](https://github.com/tehreem-fat/hajj-shield-platform/issues)
 ![status](https://img.shields.io/badge/status-portfolio_demo-C9A84C) ![python](https://img.shields.io/badge/python-3.10%2B-2E9C6E) ![license](https://img.shields.io/badge/license-MIT-9FB0A9)
 
 ![Architecture](docs/architecture.png)
@@ -27,7 +33,19 @@ During Hajj, over 2.5 million pilgrims converge in a 5 sq km area. The 5G networ
 | 6 | **Demo Scenario** | A scripted end-to-end drill that exercises Modules 1–3 together in a realistic timeline. |
 
 ---
+## 📸 Screenshots
 
+### Central Dashboard
+![Dashboard](docs/screenshots/dashboard-overview.png)
+
+### Crowd Heatmap
+![Heatmap](docs/screenshots/heatmap-view.png)
+
+### Network Security Status
+![Network Security](docs/screenshots/network-security.png)
+
+### Alert Feed
+![Alert Feed](docs/screenshots/alert-feed.png)
 ## Demo Scenario: "Hajj Day 3 — Emergency Drill"
 
 This is the story the platform tells when you run `demo_scenario/hajj_day3_emergency.py`:
