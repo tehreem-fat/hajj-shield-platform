@@ -17,7 +17,6 @@ flowchart TB
 
 ## Skills demonstrated
 
-## Skills demonstrated
 - **ML/anomaly detection:** Random Forest for DDoS classification, Isolation Forest for crowd density anomalies
 - **Security engineering:** HMAC message signing/verification, Fernet (AES-128) encryption, access-controlled decryption with audit logging
 - **DevSecOps practices:** threat modeling across a multi-tenant network slice, defense-in-depth (primary signature check + NLP backstop)
@@ -93,27 +92,17 @@ python demo_scenario/hajj_day3_emergency.py
 
 ```
 
-👩‍💻 Author
-Tehreem Fatima — DevOps/DevSecOps Engineer
+## 👩‍💻 Author
+**Tehreem Fatima** — DevOps/DevSecOps Engineer
 
-https://img.shields.io/badge/GitHub-tehreem--fat-181717?style=for-the-badge&logo=github
-https://img.shields.io/badge/LinkedIn-Tehreem_Fatima-0077B5?style=for-the-badge&logo=linkedin
+🏅 **Certifications**
+- RHCSA — Red Hat Certified System Administrator
+- CKA — Certified Kubernetes Administrator
+- ISO/IEC 27001 Associate
 
-🏅 Certifications:
+💼 **Expertise:** DevOps · DevSecOps · Cloud Security · Kubernetes · CI/CD · AI/ML Security
 
-RHCSA — Red Hat Certified System Administrator
+🔗 **Connect:** [GitHub](https://github.com/tehreem-fat) · [LinkedIn](https://www.linkedin.com/in/tehreem-f-883ba1151)
 
-CKA — Certified Kubernetes Administrator
-
-ISO/IEC 27001 Associate
-
-💼 Expertise: DevOps · DevSecOps · Cloud Security · Kubernetes · CI/CD · AI/ML Security
-
-🔗 Connect with me: GitHub · LinkedIn
-
-⭐ Support
+## ⭐ Support
 If you find this project useful, please give it a ⭐ on GitHub!
-
-https://img.shields.io/github/stars/tehreem-fat/hajj-shield-platform?style=social
-
-
