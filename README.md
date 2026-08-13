@@ -34,7 +34,6 @@ During Hajj, over 2.5 million pilgrims converge in a 5 sq km area. The 5G networ
 
 ---
 ## 📸 Screenshots
-
 ### Central Dashboard
 ![Dashboard](docs/screenshots/dashboard-overview.png)
 
@@ -42,10 +41,10 @@ During Hajj, over 2.5 million pilgrims converge in a 5 sq km area. The 5G networ
 ![Heatmap](docs/screenshots/heatmap-view.png)
 
 ### Network Security Status
-![Network Security](docs/screenshots/network-security.png)
+![Network Security](docs/screenshots/network-security.png) *(Coming soon)*
 
 ### Alert Feed
-![Alert Feed](docs/screenshots/alert-feed.png)
+![Alert Feed](docs/screenshots/alert-feed.png) *(Coming soon)*
 ## Demo Scenario: "Hajj Day 3 — Emergency Drill"
 
 This is the story the platform tells when you run `demo_scenario/hajj_day3_emergency.py`:
