@@ -108,8 +108,8 @@ python demo_scenario/hajj_day3_emergency.py
 **Tehreem Fatima** — DevOps/DevSecOps Engineer
 
 🏅 **Certifications & Training**
+- Diploma in Cloud Cybersecurity ---EduQual level 3
 - ISO/IEC 27001 Information Security Associate — Skillfront
-- Diploma in Cloud Cybersecurity
 - RHCSA (Red Hat System Administration) — Course Completion, KodeKloud
 - CKA (Certified Kubernetes Administrator) — Course Completion, KodeKloud
 - Cybersecurity — Certificate of Course Completion
