@@ -63,7 +63,8 @@ This is the story the platform tells when you run `demo_scenario/hajj_day3_emerg
 > **[14:08]** A fake alert is received: *"Bridge collapsed at Jamarat!"*
 > → The Alert Integrity System verifies the signature: **FAKE**. Broadcast blocked.
 >
-> **[14:10]** A verified alert is sent to all pilgrims via 5G broadcast:
+> **[14:10]** A verified alert is sent to all pilgrims via
+> 5G broadcast:
 > *"Please use alternate route to Jamarat. Gate 4 congested."*
 >
 > **[14:15]** Crowd density in Jamarat reduces. Risk score drops to 40.
@@ -73,27 +74,29 @@ Run it yourself:
 
 ```bash
 python demo_scenario/hajj_day3_emergency.py
----
 
-## 👩‍💻 Author
+```
+👩‍💻 Author
+Tehreem Fatima — DevOps/DevSecOps Engineer
 
-**Tehreem Fatima** — DevOps/DevSecOps Engineer
+https://img.shields.io/badge/GitHub-tehreem--fat-181717?style=for-the-badge&logo=github
+https://img.shields.io/badge/LinkedIn-Tehreem_Fatima-0077B5?style=for-the-badge&logo=linkedin
 
-[![GitHub](https://img.shields.io/badge/GitHub-tehreem--fat-181717?style=for-the-badge&logo=github)](https://github.com/tehreem-fat)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Tehreem_Fatima-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/tehreem-f-883ba1151)
+🏅 Certifications:
 
-**🏅 Certifications:**
-- RHCSA — Red Hat Certified System Administrator
-- CKA — Certified Kubernetes Administrator
-- ISO/IEC 27001 Associate
+RHCSA — Red Hat Certified System Administrator
 
-**💼 Expertise:** DevOps · DevSecOps · Cloud Security · Kubernetes · CI/CD · AI/ML Security
+CKA — Certified Kubernetes Administrator
 
-**🔗 Connect with me:** [GitHub](https://github.com/tehreem-fat) · [LinkedIn](https://linkedin.com/in/tehreem-f-883ba1151)
+ISO/IEC 27001 Associate
 
----
+💼 Expertise: DevOps · DevSecOps · Cloud Security · Kubernetes · CI/CD · AI/ML Security
 
-## ⭐ Support
+🔗 Connect with me: GitHub · LinkedIn
 
+⭐ Support
 If you find this project useful, please give it a ⭐ on GitHub!
-[![Star](https://img.shields.io/github/stars/tehreem-fat/hajj-shield-platform?style=social)](https://github.com/tehreem-fat/hajj-shield-platform)
+
+https://img.shields.io/github/stars/tehreem-fat/hajj-shield-platform?style=social
+
+
