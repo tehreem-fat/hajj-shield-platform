@@ -6,7 +6,23 @@
 [![Issues](https://img.shields.io/github/issues/tehreem-fat/hajj-shield-platform)](https://github.com/tehreem-fat/hajj-shield-platform/issues)
 ![status](https://img.shields.io/badge/status-portfolio_demo-C9A84C) ![python](https://img.shields.io/badge/python-3.10%2B-2E9C6E) ![license](https://img.shields.io/badge/license-MIT-9FB0A9)
 
-![Architecture](docs/architecture.png)
+```mermaid
+flowchart TB
+    A[5G Slice Security<br/>DDoS detection, auto-isolate] --> D[Central Dashboard]
+    B[Crowd Anomaly Detector<br/>Isolation Forest per zone] --> D
+    C[Alert Integrity System<br/>HMAC sign, NLP backstop] --> D
+    D --> E[Pilgrim Privacy Shield<br/>Fernet AES-128]
+    D --> F[Demo Scenario<br/>Scripted drill, modules 1-3]
+```
+
+## Skills demonstrated
+
+## Skills demonstrated
+- **ML/anomaly detection:** Random Forest for DDoS classification, Isolation Forest for crowd density anomalies
+- **Security engineering:** HMAC message signing/verification, Fernet (AES-128) encryption, access-controlled decryption with audit logging
+- **DevSecOps practices:** threat modeling across a multi-tenant network slice, defense-in-depth (primary signature check + NLP backstop)
+- **Full-stack delivery:** self-contained HTML/CSS/JS dashboard, Grafana config for production monitoring, GitHub Pages deployment
+- **Python, Shell scripting**
 
 ---
 
@@ -42,6 +58,7 @@ During Hajj, over 2.5 million pilgrims converge in a 5 sq km area. The 5G networ
 
 ### Alert Feed
 ![Alert Feed](docs/screenshots/alert-feed.png)
+
 ## 🌐 Live Demo
 
 - **Dashboard:** https://tehreem-fat.github.io/hajj-shield-platform/dashboard/index.html
@@ -75,6 +92,7 @@ Run it yourself:
 python demo_scenario/hajj_day3_emergency.py
 
 ```
+
 👩‍💻 Author
 Tehreem Fatima — DevOps/DevSecOps Engineer
 
