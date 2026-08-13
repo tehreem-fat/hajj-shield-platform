@@ -95,14 +95,13 @@ python demo_scenario/hajj_day3_emergency.py
 ## 👩‍💻 Author
 **Tehreem Fatima** — DevOps/DevSecOps Engineer
 
-🏅 **Certifications**
-- RHCSA — Red Hat Certified System Administrator
-- CKA — Certified Kubernetes Administrator
-- ISO/IEC 27001 Associate
+🏅 **Certifications & Training**
+- ISO/IEC 27001 Information Security Associate — Skillfront
+- Diploma in Cloud Cybersecurity
+- RHCSA (Red Hat System Administration) — Course Completion, KodeKloud
+- CKA (Certified Kubernetes Administrator) — Course Completion, KodeKloud
+- Cybersecurity — Certificate of Course Completion
 
 💼 **Expertise:** DevOps · DevSecOps · Cloud Security · Kubernetes · CI/CD · AI/ML Security
 
 🔗 **Connect:** [GitHub](https://github.com/tehreem-fat) · [LinkedIn](https://www.linkedin.com/in/tehreem-f-883ba1151)
-
-## ⭐ Support
-If you find this project useful, please give it a ⭐ on GitHub!
