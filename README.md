@@ -73,3 +73,25 @@ Run it yourself:
 
 ```bash
 python demo_scenario/hajj_day3_emergency.py
+## 👩‍💻 Author
+
+**Tehreem Fatima** — DevOps/DevSecOps Engineer
+
+[![GitHub](https://img.shields.io/badge/GitHub-tehreem--fat-181717?style=for-the-badge&logo=github)](https://github.com/tehreem-fat)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Tehreem_Fatima-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/tehreem-f-883ba1151)
+
+**🏅 Certifications:**
+- RHCSA — Red Hat Certified System Administrator
+- CKA — Certified Kubernetes Administrator
+- ISO/IEC 27001 Associate
+
+**💼 Expertise:** DevOps · DevSecOps · Cloud Security · Kubernetes · CI/CD · AI/ML Security
+
+**🔗 Connect with me:** [GitHub](https://github.com/tehreem-fat) · [LinkedIn](https://linkedin.com/in/tehreem-f-883ba1151)
+
+---
+
+## ⭐ Support
+
+If you find this project useful, please give it a ⭐ on GitHub!
+[![Star](https://img.shields.io/github/stars/tehreem-fat/hajj-shield-platform?style=social)](https://github.com/tehreem-fat/hajj-shield-platform)
