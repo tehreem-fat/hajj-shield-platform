@@ -47,7 +47,7 @@ During Hajj, over 2.5 million pilgrims converge in a 5 sq km area. The 5G networ
 
 - **Dashboard:** https://tehreem-fat.github.io/hajj-shield-platform/dashboard/index.html
 - **Heatmap:** https://tehreem-fat.github.io/hajj-shield-platform/haram_heatmap.html
-- 
+
 ## Demo Scenario: "Hajj Day 3 — Emergency Drill"
 
 This is the story the platform tells when you run `demo_scenario/hajj_day3_emergency.py`:
